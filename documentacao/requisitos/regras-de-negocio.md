@@ -52,17 +52,18 @@ Cada empréstimo pode ser renovado **uma única vez**, desde que:
 
 - o empréstimo não esteja atrasado;
 - o usuário não possua multa pendente;
-- não exista reserva para o livro.
+- o livro não possua reservas ativas.
 
 A renovação deve acrescentar à data prevista de devolução o prazo correspondente ao tipo de usuário definido na **RN02**.
 
 ## RN07 — Reserva de livro
 
-Um usuário somente pode ser adicionado à fila de reserva quando:
+Um usuário somente pode ser adicionado à fila de reserva de um livro quando:
 
-- não houver unidades disponíveis do livro;
-- estiver apto conforme a **RN05**;
-- não estiver na fila de reserva do mesmo livro.
+- o livro não possuir unidades disponíveis;
+- o usuário não possuir multa pendente;
+- o usuário não estiver na fila de reserva do mesmo livro;
+- o usuário não possuir empréstimo ativo do mesmo livro.
 
 ## RN08 — Fila de reserva
 
