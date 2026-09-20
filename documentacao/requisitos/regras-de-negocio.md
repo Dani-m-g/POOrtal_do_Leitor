@@ -1,0 +1,70 @@
+# Regras de Negócio
+
+As regras de negócio definem as restrições e condições aplicadas às operações do POOrtal do Leitor.
+
+## RN01 — Limite de empréstimos
+
+A quantidade máxima de empréstimos ativos é definida de acordo com o tipo de usuário:
+
+| Tipo de usuário | Limite |
+|---|---:|
+| Aluno | 5 livros |
+| Professor | 8 livros |
+| Funcionário | 8 livros |
+
+Um novo empréstimo não pode ser registrado caso o usuário já tenha atingido o limite correspondente.
+
+## RN02 — Prazo de empréstimo
+
+O prazo de empréstimo é definido de acordo com o tipo de usuário:
+
+| Tipo de usuário | Prazo |
+|---|---:|
+| Aluno | 7 dias |
+| Professor | 28 dias |
+| Funcionário | 28 dias |
+
+A data prevista de devolução deve ser calculada a partir da data de registro do empréstimo.
+
+## RN03 — Disponibilidade para empréstimo
+
+Um empréstimo somente pode ser registrado quando houver **pelo menos uma unidade disponível** do livro.
+
+## RN04 — Multa por atraso
+
+A devolução realizada após a data prevista gera multa de **R$ 1,00 por dia de atraso**.
+
+O valor da multa deve ser calculado com base na quantidade de dias entre a data prevista e a data efetiva de devolução.
+
+## RN05 — Restrição por multa pendente
+
+O usuário que possuir multa pendente não pode:
+
+- realizar novo empréstimo;
+- renovar empréstimo;
+- ingressar em fila de reserva.
+
+As restrições deixam de ser aplicadas quando não houver multas pendentes associadas ao usuário.
+
+## RN06 — Renovação de empréstimo
+
+Cada empréstimo pode ser renovado **uma única vez**, desde que:
+
+- o empréstimo não esteja atrasado;
+- o usuário não possua multa pendente;
+- não exista reserva para o livro.
+
+A renovação deve acrescentar à data prevista de devolução o prazo correspondente ao tipo de usuário definido na **RN02**.
+
+## RN07 — Reserva de livro
+
+Um usuário somente pode ser adicionado à fila de reserva quando:
+
+- não houver unidades disponíveis do livro;
+- o usuário não possuir multa pendente.
+
+## RN08 — Fila de reserva
+
+A fila de reserva de cada livro deve seguir a ordem de inclusão dos usuários (**FIFO — First In, First Out**).
+
+Quando uma unidade do livro se tornar disponível, o primeiro usuário da fila terá prioridade.
