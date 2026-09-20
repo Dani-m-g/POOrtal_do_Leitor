@@ -61,10 +61,39 @@ A renovação deve acrescentar à data prevista de devolução o prazo correspon
 Um usuário somente pode ser adicionado à fila de reserva quando:
 
 - não houver unidades disponíveis do livro;
-- o usuário não possuir multa pendente.
+- estiver apto conforme a **RN05**;
+- não estiver na fila de reserva do mesmo livro.
 
 ## RN08 — Fila de reserva
 
 A fila de reserva de cada livro deve seguir a ordem de inclusão dos usuários (**FIFO — First In, First Out**).
 
 Quando uma unidade do livro se tornar disponível, o primeiro usuário da fila terá prioridade.
+
+Ao registrar o empréstimo para o primeiro usuário da fila, sua reserva deve ser removida automaticamente.
+
+## RN09 — Exclusão de usuário
+
+Um usuário somente pode ser excluído quando não possuir:
+
+- empréstimos ativos;
+- multas pendentes;
+- reservas ativas.
+
+Caso exista qualquer um desses vínculos, a exclusão deve ser bloqueada.
+
+## RN10 — Exclusão de livro
+
+Um livro somente pode ser excluído quando não possuir:
+
+- empréstimos ativos;
+- usuários na fila de reserva.
+
+Caso existam vínculos ativos, o livro deve ser marcado como **pendente de exclusão**.
+
+Enquanto estiver pendente de exclusão:
+
+- novas reservas não podem ser registradas;
+- novos empréstimos somente podem atender usuários que já estejam na fila de reserva.
+
+A exclusão poderá ser concluída quando não existirem mais empréstimos ativos nem usuários na fila de reserva.
