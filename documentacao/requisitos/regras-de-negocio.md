@@ -24,7 +24,7 @@ O prazo de empréstimo é definido de acordo com o tipo de usuário:
 | Professor | 28 dias |
 | Funcionário | 28 dias |
 
-A renovação deve acrescentar à data prevista de devolução o prazo de empréstimo aplicável ao tipo de usuário.
+A data prevista de devolução deve ser calculada a partir da data de registro do empréstimo.
 
 ## RN03 — Disponibilidade para empréstimo
 
