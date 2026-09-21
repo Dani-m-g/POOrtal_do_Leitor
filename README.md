@@ -19,7 +19,7 @@ Sistema de gerenciamento de biblioteca desenvolvido para a disciplina de **Progr
 
 O **POOrtal do Leitor** é um sistema de gerenciamento de biblioteca voltado ao controle do acervo e das operações relacionadas a usuários, empréstimos, devoluções, renovações, reservas e multas.
 
-O sistema possui três tipos de usuários: **Aluno, Professor e Funcionário**. Alunos e professores podem consultar o acervo, enquanto o funcionário é responsável pelas operações administrativas do sistema.
+O sistema possui três tipos de usuários: **Aluno, Professor e Funcionário**. A consulta ao acervo é pública e não exige autenticação, enquanto o funcionário é responsável pelas operações administrativas do sistema.
 
 O objetivo do projeto é desenvolver um sistema capaz de centralizar e automatizar o gerenciamento da biblioteca, aplicando os conceitos estudados em POO2, incluindo **Programação Orientada a Objetos, UML, arquitetura MVC e persistência em banco de dados**.
 
@@ -46,10 +46,17 @@ O objetivo do projeto é desenvolver um sistema capaz de centralizar e automatiz
 
 ## Documentação
 
-A documentação do projeto contempla:
-
-- requisitos funcionais e não funcionais;
-- regras de negócio;
-- diagrama de casos de uso;
-- diagrama de classes;
-- diagramas de atividades.
+```text
+documentacao/
+├── requisitos/
+│   ├── requisitos-funcionais.md
+│   ├── requisitos-nao-funcionais.md
+│   └── regras-de-negocio.md
+└── diagramas/
+    ├── POOrtal_do_Leitor.asta
+    ├── diagrama-de-casos-de-uso.pdf
+    ├── diagrama-de-classes.pdf
+    └── diagramas-de-atividades/
+        ├── registrar-emprestimo.pdf
+        ├── registrar-devolucao.pdf
+        └── adicionar-usuario-fila-reserva.pdf
