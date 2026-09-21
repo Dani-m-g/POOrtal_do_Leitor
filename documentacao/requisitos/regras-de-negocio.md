@@ -54,7 +54,7 @@ Cada empréstimo pode ser renovado **uma única vez**, desde que:
 - o usuário não possua multa pendente;
 - o livro não possua reservas ativas.
 
-A renovação deve acrescentar à data prevista de devolução o prazo correspondente ao tipo de usuário.
+A renovação deve acrescentar à data prevista de devolução o prazo de empréstimo aplicável ao tipo de usuário.
 
 ## RN07 — Reserva de livro
 
