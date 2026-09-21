@@ -32,7 +32,7 @@ O objetivo do projeto é desenvolver um sistema capaz de centralizar e automatiz
 - renovação de empréstimos;
 - gerenciamento da fila de reservas;
 - cálculo de multas;
-- registro de pagamentos.
+- registro de quitação de multas.
 
 ## Tecnologias
 

@@ -24,7 +24,7 @@ O prazo de empréstimo é definido de acordo com o tipo de usuário:
 | Professor | 28 dias |
 | Funcionário | 28 dias |
 
-A data prevista de devolução deve ser calculada a partir da data de registro do empréstimo.
+A renovação deve acrescentar à data prevista de devolução o prazo de empréstimo aplicável ao tipo de usuário.
 
 ## RN03 — Disponibilidade para empréstimo
 
@@ -54,7 +54,7 @@ Cada empréstimo pode ser renovado **uma única vez**, desde que:
 - o usuário não possua multa pendente;
 - o livro não possua reservas ativas.
 
-A renovação deve acrescentar à data prevista de devolução o prazo correspondente ao tipo de usuário definido na **RN02**.
+A renovação deve acrescentar à data prevista de devolução o prazo correspondente ao tipo de usuário.
 
 ## RN07 — Reserva de livro
 
