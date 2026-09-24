@@ -1,0 +1,6 @@
+# Maven
+/POOrtal_do_Leitor/target/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
