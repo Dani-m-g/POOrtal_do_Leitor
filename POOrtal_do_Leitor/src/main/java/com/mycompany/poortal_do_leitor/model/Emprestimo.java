@@ -4,24 +4,71 @@ import java.time.LocalDate;
 
 public class Emprestimo {
     private long id;
+    private Usuario usuario;
+    private Livro livro;
     private LocalDate dataEmprestimo;
     private LocalDate dataPrevistaDevolucao;
     private LocalDate dataDevolucao;
     private boolean renovado;
 
+    public Emprestimo(Usuario usuario, Livro livro, LocalDate dataEmprestimo) {
+        this.usuario = usuario;
+        this.livro = livro;
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataPrevistaDevolucao = calcularDataDevolucao();
+        this.renovado = false;
+    }
+
     public LocalDate calcularDataDevolucao() {
-        throw new UnsupportedOperationException("Ainda não implementado.");
+        return dataEmprestimo.plusDays(
+                usuario.getPrazoEmprestimo()
+        );
     }
 
     public boolean estaAtrasado() {
-        throw new UnsupportedOperationException("Ainda não implementado.");
+        LocalDate dataReferencia = dataDevolucao != null
+                ? dataDevolucao
+                : LocalDate.now();
+
+        return dataReferencia.isAfter(dataPrevistaDevolucao);
     }
 
     public void renovar() {
-        throw new UnsupportedOperationException("Ainda não implementado.");
+        if (renovado) {
+            throw new IllegalStateException(
+                    "O empréstimo já foi renovado."
+            );
+        }
+
+        if (dataDevolucao != null) {
+            throw new IllegalStateException(
+                    "O empréstimo já foi devolvido."
+            );
+        }
+
+        if (estaAtrasado()) {
+            throw new IllegalStateException(
+                    "O empréstimo está atrasado."
+            );
+        }
+
+        dataPrevistaDevolucao =
+                dataPrevistaDevolucao.plusDays(
+                        usuario.getPrazoEmprestimo()
+                );
+
+        renovado = true;
     }
 
     public void registrarDevolucao(LocalDate data) {
-        throw new UnsupportedOperationException("Ainda não implementado.");
+        dataDevolucao = data;
+    }
+
+    public LocalDate getDataPrevistaDevolucao() {
+        return dataPrevistaDevolucao;
+    }
+
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
     }
 }

@@ -11,15 +11,40 @@ public class Livro {
     private int quantidadeDisponivel;
     private boolean pendenteExclusao;
 
+    public Livro(String titulo, String genero, int ano,
+                 String autor, String edicao, int quantidadeTotal) {
+
+        this.titulo = titulo;
+        this.genero = genero;
+        this.ano = ano;
+        this.autor = autor;
+        this.edicao = edicao;
+        this.quantidadeTotal = quantidadeTotal;
+        this.quantidadeDisponivel = quantidadeTotal;
+        this.pendenteExclusao = false;
+    }
+
     public void marcarPendenteExclusao() {
-        throw new UnsupportedOperationException("Ainda não implementado.");
+        pendenteExclusao = true;
     }
 
     public void incrementarDisponibilidade() {
-        throw new UnsupportedOperationException("Ainda não implementado.");
-    }
+        if (quantidadeDisponivel >= quantidadeTotal) {
+            throw new IllegalStateException(
+                    "A quantidade disponível não pode ultrapassar a quantidade total."
+            );
+        }
 
+        quantidadeDisponivel++;
+    }
+    
     public void decrementarDisponibilidade() {
-        throw new UnsupportedOperationException("Ainda não implementado.");
+        if (quantidadeDisponivel <= 0) {
+            throw new IllegalStateException(
+                    "Não há unidades disponíveis."
+            );
+        }
+
+        quantidadeDisponivel--;
     }
 }
