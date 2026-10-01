@@ -21,7 +21,7 @@ O **POOrtal do Leitor** é um sistema de gerenciamento de biblioteca voltado ao 
 
 O sistema possui três tipos de usuários: **Aluno, Professor e Funcionário**. A consulta ao acervo é pública e não exige autenticação, enquanto o funcionário é responsável pelas operações administrativas do sistema.
 
-O objetivo do projeto é desenvolver um sistema capaz de centralizar e automatizar o gerenciamento da biblioteca, aplicando os conceitos estudados em POO2, incluindo **Programação Orientada a Objetos, UML, arquitetura MVC e persistência em banco de dados**.
+O objetivo do projeto é desenvolver um sistema capaz de centralizar e automatizar o gerenciamento da biblioteca, aplicando os conceitos estudados em POO2, incluindo **Programação Orientada a Objetos, UML, arquitetura MVC, Spring Boot e persistência em banco de dados**.
 
 ## Principais Funcionalidades
 
@@ -37,10 +37,10 @@ O objetivo do projeto é desenvolver um sistema capaz de centralizar e automatiz
 ## Tecnologias
 
 - Java
-- Java Swing
+- Spring Boot
+- Spring Web
 - Apache NetBeans
 - Maven
-- JDBC
 - MySQL
 - Git e GitHub
 
