@@ -45,6 +45,12 @@ public class UsuarioService {
                 .orElseThrow(() -> new NotFoundException("Usuário não encontrado."));
     }
 
+    @Transactional(readOnly = true)
+    public Usuario buscarPorEmail(String email) {
+        return usuarios.findByEmail(email)
+                .orElseThrow(() -> new NotFoundException("Funcionário não encontrado."));
+    }
+
     public Usuario cadastrar(String nome, String email, String senha, TipoUsuario tipo) {
         String emailNormalizado = normalizarEmail(email);
         if (usuarios.existsByEmail(emailNormalizado)) {
