@@ -45,6 +45,7 @@ public class SegurancaConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(autorizacao -> autorizacao
+                        .requestMatchers(HttpMethod.GET, "/", "/index.html", "/styles.css", "/app.js").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/livros", "/api/livros/*").permitAll()
                         .anyRequest().hasRole("FUNCIONARIO"))
                 .httpBasic(basic -> basic.authenticationEntryPoint((request, response, exception) -> {

@@ -25,7 +25,8 @@ public final class Respostas {
 
     public record EmprestimoResponse(Long id, Long usuarioId, Long livroId,
             LocalDate dataEmprestimo, LocalDate dataPrevistaDevolucao,
-            LocalDate dataDevolucao, boolean renovado) {
+            LocalDate dataDevolucao, boolean renovado,
+            String nomeUsuarioHistorico, String tituloLivroHistorico) {
     }
 
     public record ReservaResponse(Long id, Long usuarioId, Long livroId,
@@ -50,7 +51,8 @@ public final class Respostas {
         Long usuarioId = emprestimo.getUsuario() == null ? null : emprestimo.getUsuario().getId();
         Long livroId = emprestimo.getLivro() == null ? null : emprestimo.getLivro().getId();
         return new EmprestimoResponse(emprestimo.getId(), usuarioId, livroId, emprestimo.getDataEmprestimo(),
-                emprestimo.getDataPrevistaDevolucao(), emprestimo.getDataDevolucao(), emprestimo.isRenovado());
+                emprestimo.getDataPrevistaDevolucao(), emprestimo.getDataDevolucao(), emprestimo.isRenovado(),
+                emprestimo.getNomeUsuarioHistorico(), emprestimo.getTituloLivroHistorico());
     }
 
     public static ReservaResponse reserva(Reserva reserva) {

@@ -28,6 +28,11 @@ public class Emprestimo {
     @JoinColumn(name = "livro_id")
     private Livro livro;
 
+    // Preserva a identificação no momento da exclusão, sem manter os cadastros.
+    private String nomeUsuarioHistorico;
+
+    private String tituloLivroHistorico;
+
     @Column(nullable = false)
     private LocalDate dataEmprestimo;
 
@@ -83,14 +88,20 @@ public class Emprestimo {
         if (dataDevolucao == null) {
             throw new IllegalStateException("Não é possível excluir o usuário de um empréstimo ativo.");
         }
-        usuario = null;
+        if (usuario != null) {
+            nomeUsuarioHistorico = usuario.getNome();
+            usuario = null;
+        }
     }
 
     public void desvincularLivro() {
         if (dataDevolucao == null) {
             throw new IllegalStateException("Não é possível excluir o livro de um empréstimo ativo.");
         }
-        livro = null;
+        if (livro != null) {
+            tituloLivroHistorico = livro.getTitulo();
+            livro = null;
+        }
     }
 
     public Long getId() {
@@ -103,6 +114,14 @@ public class Emprestimo {
 
     public Livro getLivro() {
         return livro;
+    }
+
+    public String getNomeUsuarioHistorico() {
+        return nomeUsuarioHistorico;
+    }
+
+    public String getTituloLivroHistorico() {
+        return tituloLivroHistorico;
     }
 
     public LocalDate getDataEmprestimo() {

@@ -61,6 +61,9 @@ public class UsuarioService {
 
     public Usuario atualizar(Long id, String nome, String email, String senha, TipoUsuario tipo) {
         Usuario usuario = buscar(id);
+        if (tipo != null && tipo != TipoUsuario.FUNCIONARIO) {
+            verificarUltimoFuncionario(usuario);
+        }
         String emailNormalizado = normalizarEmail(email);
         if (usuarios.existsByEmailAndIdNot(emailNormalizado, id)) {
             throw new RegraNegocioException("Já existe um usuário com esse e-mail.");
@@ -71,6 +74,7 @@ public class UsuarioService {
 
     public void excluir(Long id) {
         Usuario usuario = buscar(id);
+        verificarUltimoFuncionario(usuario);
         if (emprestimos.existsByUsuarioIdAndDataDevolucaoIsNull(id)
                 || multas.existsByEmprestimoUsuarioIdAndQuitadaFalse(id)
                 || reservas.existsByUsuarioId(id)) {
@@ -83,6 +87,14 @@ public class UsuarioService {
         }
         emprestimos.saveAll(historico);
         usuarios.delete(usuario);
+    }
+
+    private void verificarUltimoFuncionario(Usuario usuario) {
+        if (usuario.getTipo() == TipoUsuario.FUNCIONARIO
+                && usuarios.countByTipo(TipoUsuario.FUNCIONARIO) <= 1) {
+            throw new RegraNegocioException(
+                    "O último funcionário não pode ser excluído nem ter sua categoria alterada. Cadastre outro funcionário primeiro.");
+        }
     }
 
     private String definirSenha(String senha, String hashAtual, TipoUsuario tipo) {
