@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#164e42">
+    <title>POOrtal do Leitor · Biblioteca</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Ir para o conteúdo</a>
+<aside class="sidebar">
+    <a class="marca" href="/" aria-label="POOrtal do Leitor, início"><span class="simbolo" aria-hidden="true">P<span>↗</span></span><span>POOrtal<span class="marca-subtitulo">DO LEITOR</span></span></a>
+    <p class="nav-legenda">BIBLIOTECA</p>
+    <nav aria-label="Navegação principal">
+        <button type="button" data-pagina="acervo" aria-current="page"><span aria-hidden="true">▤</span> Acervo <span id="nav-total" class="nav-total">0</span></button>
+        <button type="button" data-pagina="usuarios" data-funcionario hidden><span aria-hidden="true">♙</span> Usuários</button>
+        <button type="button" data-pagina="emprestimos" data-funcionario hidden><span aria-hidden="true">⇄</span> Empréstimos</button>
+        <button type="button" data-pagina="reservas" data-funcionario hidden><span aria-hidden="true">≡</span> Reservas</button>
+        <button type="button" data-pagina="multas" data-funcionario hidden><span aria-hidden="true">◇</span> Multas</button>
+    </nav>
+    <div class="acesso">
+        <span class="avatar" aria-hidden="true">P</span>
+        <div><strong id="nome-acesso">Visitante</strong><small id="tipo-acesso">Consulta pública ao acervo</small></div>
+        <button type="button" class="botao secundario" id="acesso-botao">Entrar como funcionário <span aria-hidden="true">→</span></button>
+    </div>
+    <p class="instituicao">UTFPR · Cornélio Procópio<br>Projeto acadêmico de POO2</p>
+</aside>
+<main id="conteudo" tabindex="-1">
+    <header class="barra-superior"><span>Biblioteca <span class="separador">/</span> <strong id="breadcrumb">Acervo</strong></span><span class="indicador"><i></i> POOrtal do Leitor</span></header>
+    <div id="aviso" class="aviso" role="status" aria-live="polite" hidden><span id="aviso-texto"></span><button type="button" id="fechar-aviso" aria-label="Fechar mensagem">×</button></div>
+    <div class="cabecalho-pagina">
+        <div><p class="sobretitulo" id="sobretitulo">CONHECIMENTO AO SEU ALCANCE</p><h1 id="titulo-pagina">Encontre sua próxima leitura.</h1><p id="descricao-pagina">Explore o acervo e consulte a disponibilidade dos livros.</p></div>
+        <button type="button" class="botao secundario" id="atualizar"><span aria-hidden="true">↻</span> Atualizar</button>
+    </div>
+    <p id="carregando" class="carregando" role="status" hidden>Atualizando os dados…</p>
+
+    <section id="pagina-acervo" aria-label="Acervo">
+        <div class="resumo-acervo">
+            <div class="resumo-item"><span class="rotulo">Títulos no acervo</span><strong id="total-titulos">—</strong><span>Histórias e conhecimento</span></div>
+            <div class="resumo-item"><span class="rotulo">Exemplares disponíveis</span><strong id="total-disponiveis">—</strong><span>Prontos para uma nova leitura</span></div>
+            <div class="resumo-nota"><span class="sobretitulo">UM LIVRO, MUITAS POSSIBILIDADES</span><p>A próxima descoberta<br>começa por aqui.</p><div class="livros-ilustracao" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
+        </div>
+        <div class="painel">
+            <div class="painel-titulo"><div><h2>Nosso acervo <span id="quantidade-acervo" class="contador">0</span></h2><p>Todos os livros da biblioteca, em um só lugar.</p></div><button type="button" class="botao primario" data-action="novo-livro" data-funcionario hidden>+ Cadastrar livro</button></div>
+            <div class="filtros"><label class="busca"><span aria-hidden="true">⌕</span><input id="busca-livros" type="search" aria-label="Buscar livros" placeholder="Busque por título, autor ou gênero…"></label><label class="filtro-select"><span class="sr-only">Disponibilidade</span><select id="filtro-livros"><option value="todos">Todos os livros</option><option value="disponiveis">Com exemplares disponíveis</option><option value="indisponiveis">Sem exemplares disponíveis</option><option value="pendentes">Pendentes de exclusão</option></select></label></div>
+            <div class="tabela-container"><table><caption class="sr-only">Livros do acervo</caption><thead><tr><th>Livro / Autor</th><th>Gênero</th><th>Ano / Edição</th><th>Disponibilidade</th><th data-funcionario hidden>Ações</th></tr></thead><tbody id="lista-livros"></tbody></table></div>
+            <p class="rodape-painel">Empréstimos e reservas são realizados por um funcionário da biblioteca.</p>
+        </div>
+    </section>
+
+    <section id="pagina-usuarios" aria-label="Usuários" hidden>
+        <div class="painel"><div class="painel-titulo"><div><h2>Usuários cadastrados</h2><p>Alunos, professores e funcionários da biblioteca.</p></div><button type="button" class="botao primario" data-action="novo-usuario">+ Cadastrar usuário</button></div>
+            <div class="filtros"><label class="busca"><span aria-hidden="true">⌕</span><input id="busca-usuarios" type="search" aria-label="Buscar usuários" placeholder="Busque por nome ou e-mail…"></label></div>
+            <div class="tabela-container"><table><caption class="sr-only">Usuários cadastrados</caption><thead><tr><th>Nome</th><th>E-mail</th><th>Tipo</th><th>Ações</th></tr></thead><tbody id="lista-usuarios"></tbody></table></div>
+        </div>
+    </section>
+
+    <section id="pagina-emprestimos" aria-label="Empréstimos" hidden>
+        <div class="painel"><div class="painel-titulo"><div><h2>Empréstimos e devoluções</h2><p>Acompanhe os prazos e registre a circulação dos livros.</p></div><button type="button" class="botao primario" data-action="novo-emprestimo">+ Registrar empréstimo</button></div>
+            <div class="filtros"><label class="busca"><span aria-hidden="true">⌕</span><input id="busca-emprestimos" type="search" aria-label="Buscar empréstimos" placeholder="Busque por livro ou usuário…"></label><select id="filtro-emprestimos" aria-label="Situação do empréstimo"><option value="ativos">Empréstimos ativos</option><option value="devolvidos">Devolvidos</option><option value="todos">Todos os empréstimos</option></select></div>
+            <div class="tabela-container"><table><caption class="sr-only">Empréstimos</caption><thead><tr><th>Livro / Usuário</th><th>Empréstimo</th><th>Prazo</th><th>Situação</th><th>Ações</th></tr></thead><tbody id="lista-emprestimos"></tbody></table></div>
+        </div>
+    </section>
+
+    <section id="pagina-reservas" aria-label="Reservas" hidden>
+        <div class="painel"><div class="painel-titulo"><div><h2>Fila de reservas</h2><p>As reservas são atendidas por ordem de entrada na fila.</p></div><button type="button" class="botao primario" data-action="nova-reserva">+ Adicionar reserva</button></div>
+            <div class="filtros"><label class="selecao-livro" for="livro-fila">Selecione um livro<select id="livro-fila"><option value="">Selecione um livro</option></select></label></div>
+            <div class="tabela-container"><table><caption class="sr-only">Fila do livro selecionado</caption><thead><tr><th>Posição</th><th>Usuário</th><th>Solicitação</th><th>Ações</th></tr></thead><tbody id="lista-reservas"></tbody></table></div>
+            <p class="rodape-painel">Ao registrar o empréstimo para o primeiro usuário, sua reserva é removida automaticamente.</p>
+        </div>
+    </section>
+
+    <section id="pagina-multas" aria-label="Multas" hidden>
+        <div class="painel"><div class="painel-titulo"><div><h2>Multas por atraso</h2><p>R$ 1,00 por dia de atraso, calculado na devolução.</p></div></div>
+            <div class="filtros"><label class="busca"><span aria-hidden="true">⌕</span><input id="busca-multas" type="search" aria-label="Buscar multas" placeholder="Busque por livro ou usuário…"></label><select id="filtro-multas" aria-label="Situação da multa"><option value="pendentes">Multas pendentes</option><option value="quitadas">Quitadas</option><option value="todas">Todas as multas</option></select></div>
+            <div class="tabela-container"><table><caption class="sr-only">Multas</caption><thead><tr><th>Livro / Usuário</th><th>Atraso</th><th>Valor</th><th>Situação</th><th>Ações</th></tr></thead><tbody id="lista-multas"></tbody></table></div>
+        </div>
+    </section>
+    <footer class="rodape">POOrtal do Leitor <span>Biblioteca · UTFPR</span></footer>
+</main>
+
+<dialog id="dialog-login" aria-labelledby="titulo-login"><form id="form-login">
+    <div class="dialog-cabecalho"><div><p class="sobretitulo">ACESSO À BIBLIOTECA</p><h2 id="titulo-login">Entrar como funcionário</h2></div><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar">×</button></div>
+    <p class="ajuda">Use seu e-mail e senha cadastrados para gerenciar a biblioteca.</p>
+    <label>E-mail<input name="email" type="email" required maxlength="255" autocomplete="username"></label>
+    <label>Senha<input name="senha" type="password" required autocomplete="current-password"></label>
+    <p class="erro-form" role="alert" hidden></p><div class="dialog-acoes"><button type="button" class="botao secundario" data-fechar>Cancelar</button><button type="submit" class="botao primario">Entrar</button></div>
+</form></dialog>
+
+<dialog id="dialog-livro" aria-labelledby="titulo-livro"><form id="form-livro">
+    <div class="dialog-cabecalho"><h2 id="titulo-livro">Cadastrar livro</h2><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar">×</button></div>
+    <input name="id" type="hidden"><label>Título<input name="titulo" required maxlength="255"></label><label>Autor<input name="autor" required maxlength="255"></label>
+    <div class="form-duas-colunas"><label>Gênero<input name="genero" required maxlength="255"></label><label>Ano<input name="ano" type="number" min="1" max="2147483647" step="1" required></label><label>Edição<input name="edicao" required maxlength="255"></label><label>Quantidade total<input name="quantidadeTotal" type="number" min="0" max="2147483647" step="1" required></label></div>
+    <p class="erro-form" role="alert" hidden></p><div class="dialog-acoes"><button type="button" class="botao secundario" data-fechar>Cancelar</button><button type="submit" class="botao primario">Salvar livro</button></div>
+</form></dialog>
+
+<dialog id="dialog-usuario" aria-labelledby="titulo-usuario"><form id="form-usuario">
+    <div class="dialog-cabecalho"><h2 id="titulo-usuario">Cadastrar usuário</h2><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar">×</button></div>
+    <input name="id" type="hidden"><label>Nome<input name="nome" required maxlength="255" autocomplete="name"></label><label>E-mail<input name="email" type="email" required maxlength="255" autocomplete="email"></label>
+    <label>Tipo<select name="tipo"><option value="ALUNO">Aluno</option><option value="PROFESSOR">Professor</option><option value="FUNCIONARIO">Funcionário</option></select></label>
+    <label>Senha<input name="senha" type="password" autocomplete="new-password" aria-describedby="ajuda-senha"></label><p id="ajuda-senha" class="ajuda">Obrigatória para um novo funcionário. Ao editar, deixe em branco para manter a senha atual.</p>
+    <p class="erro-form" role="alert" hidden></p><div class="dialog-acoes"><button type="button" class="botao secundario" data-fechar>Cancelar</button><button type="submit" class="botao primario">Salvar usuário</button></div>
+</form></dialog>
+
+<dialog id="dialog-circulacao" aria-labelledby="titulo-circulacao"><form id="form-circulacao">
+    <div class="dialog-cabecalho"><h2 id="titulo-circulacao">Registrar empréstimo</h2><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar">×</button></div>
+    <input name="operacao" type="hidden"><label>Usuário<select name="usuarioId" required></select></label><label>Livro<select name="livroId" required></select></label><p id="ajuda-circulacao" class="ajuda"></p>
+    <p class="erro-form" role="alert" hidden></p><div class="dialog-acoes"><button type="button" class="botao secundario" data-fechar>Cancelar</button><button type="submit" class="botao primario">Confirmar</button></div>
+</form></dialog>
+
+<dialog id="dialog-confirmacao" aria-labelledby="titulo-confirmacao"><form id="form-confirmacao">
+    <div class="dialog-cabecalho"><h2 id="titulo-confirmacao">Confirmar operação</h2><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar">×</button></div>
+    <p id="texto-confirmacao" class="ajuda"></p><p class="erro-form" role="alert" hidden></p><div class="dialog-acoes"><button type="button" class="botao secundario" data-fechar>Cancelar</button><button type="submit" class="botao primario">Confirmar</button></div>
+</form></dialog>
+<noscript><p class="sem-javascript">Ative o JavaScript no navegador para consultar e operar a biblioteca.</p></noscript>
+</body>
+</html>
