@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+# Testes mantidos apenas localmente
+/src/test/
+
 ### STS ###
 .apt_generated
 .classpath
