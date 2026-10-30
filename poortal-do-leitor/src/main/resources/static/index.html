@@ -9,30 +9,49 @@
     <script src="/app.js" defer></script>
 </head>
 <body>
+<!-- Google Material Symbols Outlined: https://github.com/google/material-design-icons (Apache-2.0).
+     Ícones incorporados para funcionar sem fonte externa. Licença em THIRD-PARTY-LICENSES/Material-Symbols.txt. -->
+<svg class="icones" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="icone-add" viewBox="0 -960 960 960"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></symbol>
+    <symbol id="icone-arrow_outward" viewBox="0 -960 960 960"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></symbol>
+    <symbol id="icone-book_2" viewBox="0 -960 960 960"><path d="M300-80q-58 0-99-41t-41-99v-520q0-58 41-99t99-41h500v600q-25 0-42.5 17.5T740-220q0 25 17.5 42.5T800-160v80H300Zm-60-267q14-7 29-10t31-3h20v-440h-20q-25 0-42.5 17.5T240-740v393Zm160-13h320v-440H400v440Zm-160 13v-453 453Zm60 187h373q-6-14-9.5-28.5T660-220q0-16 3-31t10-29H300q-26 0-43 17.5T240-220q0 26 17 43t43 17Z"/></symbol>
+    <symbol id="icone-chevron_right" viewBox="0 -960 960 960"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></symbol>
+    <symbol id="icone-close" viewBox="0 -960 960 960"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></symbol>
+    <symbol id="icone-format_list_numbered" viewBox="0 -960 960 960"><path d="M120-80v-60h100v-30h-60v-60h60v-30H120v-60h120q17 0 28.5 11.5T280-280v40q0 17-11.5 28.5T240-200q17 0 28.5 11.5T280-160v40q0 17-11.5 28.5T240-80H120Zm0-280v-110q0-17 11.5-28.5T160-510h60v-30H120v-60h120q17 0 28.5 11.5T280-560v70q0 17-11.5 28.5T240-450h-60v30h100v60H120Zm60-280v-180h-60v-60h120v240h-60Zm180 440v-80h480v80H360Zm0-240v-80h480v80H360Zm0-240v-80h480v80H360Z"/></symbol>
+    <symbol id="icone-groups" viewBox="0 -960 960 960"><path d="M0-240v-63q0-43 44-70t116-27q13 0 25 .5t23 2.5q-14 21-21 44t-7 48v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-26-6.5-49T754-397q11-2 22.5-2.5t23.5-.5q72 0 116 26.5t44 70.5v63H780Zm-455-80h311q-10-20-55.5-35T480-370q-55 0-100.5 15T325-320ZM160-440q-33 0-56.5-23.5T80-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T160-440Zm640 0q-33 0-56.5-23.5T720-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T800-440Zm-320-40q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Zm0-80q17 0 28.5-11.5T520-600q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600q0 17 11.5 28.5T480-560Zm1 240Zm-1-280Z"/></symbol>
+    <symbol id="icone-login" viewBox="0 -960 960 960"><path d="M480-120v-80h280v-560H480v-80h280q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H480Zm-80-160-55-58 102-102H120v-80h327L345-622l55-58 200 200-200 200Z"/></symbol>
+    <symbol id="icone-logout" viewBox="0 -960 960 960"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></symbol>
+    <symbol id="icone-menu_book" viewBox="0 -960 960 960"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454ZM260-320q47 0 91.5 10.5T440-278v-394q-41-24-87-36t-93-12q-36 0-71.5 7T120-692v396q35-12 69.5-18t70.5-6Zm260 42q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q46-24 96-36t102-12q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 102 12t96 36q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59ZM280-494Z"/></symbol>
+    <symbol id="icone-payments" viewBox="0 -960 960 960"><path d="M560-440q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM280-320q-33 0-56.5-23.5T200-400v-320q0-33 23.5-56.5T280-800h560q33 0 56.5 23.5T920-720v320q0 33-23.5 56.5T840-320H280Zm80-80h400q0-33 23.5-56.5T840-480v-160q-33 0-56.5-23.5T760-720H360q0 33-23.5 56.5T280-640v160q33 0 56.5 23.5T360-400Zm440 240H120q-33 0-56.5-23.5T40-240v-440h80v440h680v80ZM280-400v-320 320Z"/></symbol>
+    <symbol id="icone-person" viewBox="0 -960 960 960"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></symbol>
+    <symbol id="icone-refresh" viewBox="0 -960 960 960"><path d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z"/></symbol>
+    <symbol id="icone-search" viewBox="0 -960 960 960"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></symbol>
+    <symbol id="icone-swap_horiz" viewBox="0 -960 960 960"><path d="M280-160 80-360l200-200 56 57-103 103h287v80H233l103 103-56 57Zm400-240-56-57 103-103H440v-80h287L624-743l56-57 200 200-200 200Z"/></symbol>
+</svg>
 <a class="pular" href="#conteudo">Ir para o conteúdo</a>
 <aside class="sidebar">
-    <a class="marca" href="/" aria-label="POOrtal do Leitor, início"><span class="simbolo" aria-hidden="true">P<span>↗</span></span><span>POOrtal<span class="marca-subtitulo">DO LEITOR</span></span></a>
+    <a class="marca" href="/" aria-label="POOrtal do Leitor, início"><span class="simbolo" aria-hidden="true">P<svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-arrow_outward"></use></svg></span><span>POOrtal<span class="marca-subtitulo">DO LEITOR</span></span></a>
     <p class="nav-legenda">BIBLIOTECA</p>
     <nav aria-label="Navegação principal">
-        <button type="button" data-pagina="acervo" aria-current="page"><span aria-hidden="true">▤</span> Acervo <span id="nav-total" class="nav-total">0</span></button>
-        <button type="button" data-pagina="usuarios" data-funcionario hidden><span aria-hidden="true">♙</span> Usuários</button>
-        <button type="button" data-pagina="emprestimos" data-funcionario hidden><span aria-hidden="true">⇄</span> Empréstimos</button>
-        <button type="button" data-pagina="reservas" data-funcionario hidden><span aria-hidden="true">≡</span> Reservas</button>
-        <button type="button" data-pagina="multas" data-funcionario hidden><span aria-hidden="true">◇</span> Multas</button>
+        <button type="button" data-pagina="acervo" aria-current="page"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-menu_book"></use></svg> Acervo <span id="nav-total" class="nav-total">0</span></button>
+        <button type="button" data-pagina="usuarios" data-funcionario hidden><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-groups"></use></svg> Usuários</button>
+        <button type="button" data-pagina="emprestimos" data-funcionario hidden><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-swap_horiz"></use></svg> Empréstimos</button>
+        <button type="button" data-pagina="reservas" data-funcionario hidden><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-format_list_numbered"></use></svg> Reservas</button>
+        <button type="button" data-pagina="multas" data-funcionario hidden><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-payments"></use></svg> Multas</button>
     </nav>
     <div class="acesso">
-        <span class="avatar" aria-hidden="true">P</span>
+        <span class="avatar" aria-hidden="true"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-person"></use></svg></span>
         <div><strong id="nome-acesso">Visitante</strong><small id="tipo-acesso">Consulta pública ao acervo</small></div>
-        <button type="button" class="botao secundario" id="acesso-botao">Entrar como funcionário <span aria-hidden="true">→</span></button>
+        <button type="button" class="botao secundario" id="acesso-botao"><span id="acesso-texto">Entrar como funcionário</span><svg class="icone" aria-hidden="true" focusable="false"><use id="acesso-icone" href="#icone-login"></use></svg></button>
     </div>
     <p class="instituicao">UTFPR · Cornélio Procópio<br>Projeto acadêmico de POO2</p>
 </aside>
 <main id="conteudo" tabindex="-1">
-    <header class="barra-superior"><span>Biblioteca <span class="separador">/</span> <strong id="breadcrumb">Acervo</strong></span><span class="indicador"><i></i> POOrtal do Leitor</span></header>
-    <div id="aviso" class="aviso" role="status" aria-live="polite" hidden><span id="aviso-texto"></span><button type="button" id="fechar-aviso" aria-label="Fechar mensagem">×</button></div>
+    <header class="barra-superior"><span>Biblioteca <svg class="icone separador" aria-hidden="true" focusable="false"><use href="#icone-chevron_right"></use></svg> <strong id="breadcrumb">Acervo</strong></span><span class="indicador"><i></i> POOrtal do Leitor</span></header>
+    <div id="aviso" class="aviso" role="status" aria-live="polite" hidden><span id="aviso-texto"></span><button type="button" id="fechar-aviso" aria-label="Fechar mensagem"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-close"></use></svg></button></div>
     <div class="cabecalho-pagina">
         <div><p class="sobretitulo" id="sobretitulo">CONHECIMENTO AO SEU ALCANCE</p><h1 id="titulo-pagina">Encontre sua próxima leitura.</h1><p id="descricao-pagina">Explore o acervo e consulte a disponibilidade dos livros.</p></div>
-        <button type="button" class="botao secundario" id="atualizar"><span aria-hidden="true">↻</span> Atualizar</button>
+        <button type="button" class="botao secundario" id="atualizar"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-refresh"></use></svg> Atualizar</button>
     </div>
     <p id="carregando" class="carregando" role="status" hidden>Atualizando os dados…</p>
 
@@ -43,29 +62,29 @@
             <div class="resumo-nota"><span class="sobretitulo">UM LIVRO, MUITAS POSSIBILIDADES</span><p>A próxima descoberta<br>começa por aqui.</p><div class="livros-ilustracao" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
         </div>
         <div class="painel">
-            <div class="painel-titulo"><div><h2>Nosso acervo <span id="quantidade-acervo" class="contador">0</span></h2><p>Todos os livros da biblioteca, em um só lugar.</p></div><button type="button" class="botao primario" data-action="novo-livro" data-funcionario hidden>+ Cadastrar livro</button></div>
-            <div class="filtros"><label class="busca"><span aria-hidden="true">⌕</span><input id="busca-livros" type="search" aria-label="Buscar livros" placeholder="Busque por título, autor ou gênero…"></label><label class="filtro-select"><span class="sr-only">Disponibilidade</span><select id="filtro-livros"><option value="todos">Todos os livros</option><option value="disponiveis">Com exemplares disponíveis</option><option value="indisponiveis">Sem exemplares disponíveis</option><option value="pendentes">Pendentes de exclusão</option></select></label></div>
+            <div class="painel-titulo"><div><h2>Nosso acervo <span id="quantidade-acervo" class="contador">0</span></h2><p>Todos os livros da biblioteca, em um só lugar.</p></div><button type="button" class="botao primario" data-action="novo-livro" data-funcionario hidden><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-add"></use></svg> Cadastrar livro</button></div>
+            <div class="filtros"><label class="busca"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-search"></use></svg><input id="busca-livros" type="search" aria-label="Buscar livros" placeholder="Busque por título, autor ou gênero…"></label><label class="filtro-select"><span class="sr-only">Disponibilidade</span><select id="filtro-livros"><option value="todos">Todos os livros</option><option value="disponiveis">Com exemplares disponíveis</option><option value="indisponiveis">Sem exemplares disponíveis</option><option value="pendentes">Pendentes de exclusão</option></select></label></div>
             <div class="tabela-container"><table><caption class="sr-only">Livros do acervo</caption><thead><tr><th>Livro / Autor</th><th>Gênero</th><th>Ano / Edição</th><th>Disponibilidade</th><th data-funcionario hidden>Ações</th></tr></thead><tbody id="lista-livros"></tbody></table></div>
             <p class="rodape-painel">Empréstimos e reservas são realizados por um funcionário da biblioteca.</p>
         </div>
     </section>
 
     <section id="pagina-usuarios" aria-label="Usuários" hidden>
-        <div class="painel"><div class="painel-titulo"><div><h2>Usuários cadastrados</h2><p>Alunos, professores e funcionários da biblioteca.</p></div><button type="button" class="botao primario" data-action="novo-usuario">+ Cadastrar usuário</button></div>
-            <div class="filtros"><label class="busca"><span aria-hidden="true">⌕</span><input id="busca-usuarios" type="search" aria-label="Buscar usuários" placeholder="Busque por nome ou e-mail…"></label></div>
+        <div class="painel"><div class="painel-titulo"><div><h2>Usuários cadastrados</h2><p>Alunos, professores e funcionários da biblioteca.</p></div><button type="button" class="botao primario" data-action="novo-usuario"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-add"></use></svg> Cadastrar usuário</button></div>
+            <div class="filtros"><label class="busca"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-search"></use></svg><input id="busca-usuarios" type="search" aria-label="Buscar usuários" placeholder="Busque por nome ou e-mail…"></label></div>
             <div class="tabela-container"><table><caption class="sr-only">Usuários cadastrados</caption><thead><tr><th>Nome</th><th>E-mail</th><th>Tipo</th><th>Ações</th></tr></thead><tbody id="lista-usuarios"></tbody></table></div>
         </div>
     </section>
 
     <section id="pagina-emprestimos" aria-label="Empréstimos" hidden>
-        <div class="painel"><div class="painel-titulo"><div><h2>Empréstimos e devoluções</h2><p>Acompanhe os prazos e registre a circulação dos livros.</p></div><button type="button" class="botao primario" data-action="novo-emprestimo">+ Registrar empréstimo</button></div>
-            <div class="filtros"><label class="busca"><span aria-hidden="true">⌕</span><input id="busca-emprestimos" type="search" aria-label="Buscar empréstimos" placeholder="Busque por livro ou usuário…"></label><select id="filtro-emprestimos" aria-label="Situação do empréstimo"><option value="ativos">Empréstimos ativos</option><option value="devolvidos">Devolvidos</option><option value="todos">Todos os empréstimos</option></select></div>
+        <div class="painel"><div class="painel-titulo"><div><h2>Empréstimos e devoluções</h2><p>Acompanhe os prazos e registre a circulação dos livros.</p></div><button type="button" class="botao primario" data-action="novo-emprestimo"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-add"></use></svg> Registrar empréstimo</button></div>
+            <div class="filtros"><label class="busca"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-search"></use></svg><input id="busca-emprestimos" type="search" aria-label="Buscar empréstimos" placeholder="Busque por livro ou usuário…"></label><select id="filtro-emprestimos" aria-label="Situação do empréstimo"><option value="ativos">Empréstimos ativos</option><option value="devolvidos">Devolvidos</option><option value="todos">Todos os empréstimos</option></select></div>
             <div class="tabela-container"><table><caption class="sr-only">Empréstimos</caption><thead><tr><th>Livro / Usuário</th><th>Empréstimo</th><th>Prazo</th><th>Situação</th><th>Ações</th></tr></thead><tbody id="lista-emprestimos"></tbody></table></div>
         </div>
     </section>
 
     <section id="pagina-reservas" aria-label="Reservas" hidden>
-        <div class="painel"><div class="painel-titulo"><div><h2>Fila de reservas</h2><p>As reservas são atendidas por ordem de entrada na fila.</p></div><button type="button" class="botao primario" data-action="nova-reserva">+ Adicionar reserva</button></div>
+        <div class="painel"><div class="painel-titulo"><div><h2>Fila de reservas</h2><p>As reservas são atendidas por ordem de entrada na fila.</p></div><button type="button" class="botao primario" data-action="nova-reserva"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-add"></use></svg> Adicionar reserva</button></div>
             <div class="filtros"><label class="selecao-livro" for="livro-fila">Selecione um livro<select id="livro-fila"><option value="">Selecione um livro</option></select></label></div>
             <div class="tabela-container"><table><caption class="sr-only">Fila do livro selecionado</caption><thead><tr><th>Posição</th><th>Usuário</th><th>Solicitação</th><th>Ações</th></tr></thead><tbody id="lista-reservas"></tbody></table></div>
             <p class="rodape-painel">Ao registrar o empréstimo para o primeiro usuário, sua reserva é removida automaticamente.</p>
@@ -74,7 +93,7 @@
 
     <section id="pagina-multas" aria-label="Multas" hidden>
         <div class="painel"><div class="painel-titulo"><div><h2>Multas por atraso</h2><p>R$ 1,00 por dia de atraso, calculado na devolução.</p></div></div>
-            <div class="filtros"><label class="busca"><span aria-hidden="true">⌕</span><input id="busca-multas" type="search" aria-label="Buscar multas" placeholder="Busque por livro ou usuário…"></label><select id="filtro-multas" aria-label="Situação da multa"><option value="pendentes">Multas pendentes</option><option value="quitadas">Quitadas</option><option value="todas">Todas as multas</option></select></div>
+            <div class="filtros"><label class="busca"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-search"></use></svg><input id="busca-multas" type="search" aria-label="Buscar multas" placeholder="Busque por livro ou usuário…"></label><select id="filtro-multas" aria-label="Situação da multa"><option value="pendentes">Multas pendentes</option><option value="quitadas">Quitadas</option><option value="todas">Todas as multas</option></select></div>
             <div class="tabela-container"><table><caption class="sr-only">Multas</caption><thead><tr><th>Livro / Usuário</th><th>Atraso</th><th>Valor</th><th>Situação</th><th>Ações</th></tr></thead><tbody id="lista-multas"></tbody></table></div>
         </div>
     </section>
@@ -82,7 +101,7 @@
 </main>
 
 <dialog id="dialog-login" aria-labelledby="titulo-login"><form id="form-login">
-    <div class="dialog-cabecalho"><div><p class="sobretitulo">ACESSO À BIBLIOTECA</p><h2 id="titulo-login">Entrar como funcionário</h2></div><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar">×</button></div>
+    <div class="dialog-cabecalho"><div><p class="sobretitulo">ACESSO À BIBLIOTECA</p><h2 id="titulo-login">Entrar como funcionário</h2></div><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-close"></use></svg></button></div>
     <p class="ajuda">Use seu e-mail e senha cadastrados para gerenciar a biblioteca.</p>
     <label>E-mail<input name="email" type="email" required maxlength="255" autocomplete="username"></label>
     <label>Senha<input name="senha" type="password" required autocomplete="current-password"></label>
@@ -90,14 +109,14 @@
 </form></dialog>
 
 <dialog id="dialog-livro" aria-labelledby="titulo-livro"><form id="form-livro">
-    <div class="dialog-cabecalho"><h2 id="titulo-livro">Cadastrar livro</h2><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar">×</button></div>
+    <div class="dialog-cabecalho"><h2 id="titulo-livro">Cadastrar livro</h2><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-close"></use></svg></button></div>
     <input name="id" type="hidden"><label>Título<input name="titulo" required maxlength="255"></label><label>Autor<input name="autor" required maxlength="255"></label>
     <div class="form-duas-colunas"><label>Gênero<input name="genero" required maxlength="255"></label><label>Ano<input name="ano" type="number" min="1" max="2147483647" step="1" required></label><label>Edição<input name="edicao" required maxlength="255"></label><label>Quantidade total<input name="quantidadeTotal" type="number" min="0" max="2147483647" step="1" required></label></div>
     <p class="erro-form" role="alert" hidden></p><div class="dialog-acoes"><button type="button" class="botao secundario" data-fechar>Cancelar</button><button type="submit" class="botao primario">Salvar livro</button></div>
 </form></dialog>
 
 <dialog id="dialog-usuario" aria-labelledby="titulo-usuario"><form id="form-usuario">
-    <div class="dialog-cabecalho"><h2 id="titulo-usuario">Cadastrar usuário</h2><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar">×</button></div>
+    <div class="dialog-cabecalho"><h2 id="titulo-usuario">Cadastrar usuário</h2><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-close"></use></svg></button></div>
     <input name="id" type="hidden"><label>Nome<input name="nome" required maxlength="255" autocomplete="name"></label><label>E-mail<input name="email" type="email" required maxlength="255" autocomplete="email"></label>
     <label>Tipo<select name="tipo"><option value="ALUNO">Aluno</option><option value="PROFESSOR">Professor</option><option value="FUNCIONARIO">Funcionário</option></select></label>
     <label>Senha<input name="senha" type="password" autocomplete="new-password" aria-describedby="ajuda-senha"></label><p id="ajuda-senha" class="ajuda">Obrigatória para um novo funcionário. Ao editar, deixe em branco para manter a senha atual.</p>
@@ -105,13 +124,13 @@
 </form></dialog>
 
 <dialog id="dialog-circulacao" aria-labelledby="titulo-circulacao"><form id="form-circulacao">
-    <div class="dialog-cabecalho"><h2 id="titulo-circulacao">Registrar empréstimo</h2><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar">×</button></div>
+    <div class="dialog-cabecalho"><h2 id="titulo-circulacao">Registrar empréstimo</h2><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-close"></use></svg></button></div>
     <input name="operacao" type="hidden"><label>Usuário<select name="usuarioId" required></select></label><label>Livro<select name="livroId" required></select></label><p id="ajuda-circulacao" class="ajuda"></p>
     <p class="erro-form" role="alert" hidden></p><div class="dialog-acoes"><button type="button" class="botao secundario" data-fechar>Cancelar</button><button type="submit" class="botao primario">Confirmar</button></div>
 </form></dialog>
 
 <dialog id="dialog-confirmacao" aria-labelledby="titulo-confirmacao"><form id="form-confirmacao">
-    <div class="dialog-cabecalho"><h2 id="titulo-confirmacao">Confirmar operação</h2><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar">×</button></div>
+    <div class="dialog-cabecalho"><h2 id="titulo-confirmacao">Confirmar operação</h2><button type="button" class="fechar-dialog" data-fechar aria-label="Fechar"><svg class="icone" aria-hidden="true" focusable="false"><use href="#icone-close"></use></svg></button></div>
     <p id="texto-confirmacao" class="ajuda"></p><p class="erro-form" role="alert" hidden></p><div class="dialog-acoes"><button type="button" class="botao secundario" data-fechar>Cancelar</button><button type="submit" class="botao primario">Confirmar</button></div>
 </form></dialog>
 <noscript><p class="sem-javascript">Ative o JavaScript no navegador para consultar e operar a biblioteca.</p></noscript>

@@ -1,5 +1,11 @@
 "use strict";
 
+// Campos de texto também ativam :focus-visible com o mouse em alguns navegadores.
+document.addEventListener("pointerdown", () => document.documentElement.classList.add("foco-ponteiro"));
+document.addEventListener("keydown", evento => {
+    if (evento.key === "Tab") document.documentElement.classList.remove("foco-ponteiro");
+});
+
 // Os dados vêm da API. As credenciais ficam apenas na memória desta página.
 const estado = {
     funcionario: null, autorizacao: null, pagina: "acervo",
@@ -111,7 +117,8 @@ function renderizar() {
     document.title = `${nome} · POOrtal do Leitor`;
     elemento("nome-acesso").textContent = estado.funcionario?.nome ?? "Visitante";
     elemento("tipo-acesso").textContent = estado.funcionario ? "Funcionário da biblioteca" : "Consulta pública ao acervo";
-    elemento("acesso-botao").textContent = estado.funcionario ? "Sair do acesso de funcionário →" : "Entrar como funcionário →";
+    elemento("acesso-texto").textContent = estado.funcionario ? "Sair do acesso de funcionário" : "Entrar como funcionário";
+    elemento("acesso-icone").setAttribute("href", estado.funcionario ? "#icone-logout" : "#icone-login");
     elemento("nav-total").textContent = estado.livros.length;
     elemento("total-titulos").textContent = estado.livros.length;
     elemento("total-disponiveis").textContent = estado.livros.reduce((soma, livro) => soma + livro.quantidadeDisponivel, 0);
@@ -134,7 +141,7 @@ function renderizarLivros() {
         && (filtro !== "pendentes" || livro.pendenteExclusao));
     elemento("quantidade-acervo").textContent = livros.length;
     preencherTabela("lista-livros", livros.map(livro => `<tr>
-        <td><div class="livro-celula"><span class="capa" aria-hidden="true">${escapar(livro.titulo.charAt(0))}</span><div><strong>${escapar(livro.titulo)}</strong><small>${escapar(livro.autor)}</small></div></div></td>
+        <td><div class="livro-celula"><span class="capa" aria-hidden="true"><svg class="icone" focusable="false"><use href="#icone-book_2"></use></svg></span><div><strong>${escapar(livro.titulo)}</strong><small>${escapar(livro.autor)}</small></div></div></td>
         <td>${badge(livro.genero)}</td><td>${livro.ano}<small>Edição ${escapar(livro.edicao)}</small></td>
         <td>${badge(livro.quantidadeDisponivel > 0 ? "Disponível" : "Indisponível", livro.quantidadeDisponivel > 0 ? "verde" : "amarelo")}<small>${livro.quantidadeDisponivel} de ${livro.quantidadeTotal} exemplares</small>${livro.pendenteExclusao ? badge("Exclusão pendente", "amarelo") : ""}</td>
         ${estado.funcionario ? `<td><div class="acoes">${acao("Editar", "editar-livro", livro.id)}${acao("Excluir", "excluir-livro", livro.id, "excluir")}</div></td>` : ""}</tr>`),

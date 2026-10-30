@@ -1,3 +1,6 @@
 # Sistema operacional
 .DS_Store
 Thumbs.db
+
+# Logs de execução e de erro
+*.log
